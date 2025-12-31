@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notely</title>
+</head>
+
+<body>
+    <div class="header">
+        <button>Settings</button>
+    </div>
+
+    <div class="sidebar">
+        <div class="static-title">
+            <p class="h2">My Notes</p>
+            <div class="popup-button">
+                <button class="button p">+Note</button>
+                <div class="modal">
+                    <p class="modal-title h3">Create New Note</p>
+                    <div class="modal-content">
+                        <form id="note-create-form">
+                            <div class="form-section">
+                                <label for="note-name" class="p">name:</label>
+                                <input autocomplete="off" id="note-name" type="text" class="p">
+                            </div>
+
+                            <div class="form-section">
+                                <label for="note-desc" class="p">description:</label>
+                                <input autocomplete="off" id="note-desc" type="text" class="p">
+                            </div>
+                            
+                            <div class="submission-section">
+                                <button type="submit" class="button p">+Create Note</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notes-container"></div>
+    </div>
+
+    <div class="content">
+        <div class="note">
+            <p class="h3">Note Name</p>
+            <div class="notespace">
+                <div class="note-component">
+                    <input type="checkbox">
+                    <p>notename</p>
+                    <button class="invis-button squarify p cross">&times</button>
+                </div>
+                <div class="new note-component">
+                    <input type="checkbox" disabled>
+                    <input type="text" maxlength="20" placeholder="new note" name="" id="" class="p">
+                    <button class="invis-button squarify p">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="note">
+            <div class="new h3 note-component">
+                <input type="text" maxlength="20" placeholder="new note category" name="" id="" class="h3">
+                <button class="invis-button squarify p">+</button>
+            </div>
+            <div class="notespace">
+                <div class="new note-component">
+                    <input type="checkbox" disabled>
+                    <input type="text" maxlength="20" placeholder="new note" name="" id="" class="p">
+                    <button class="invis-button squarify p">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
