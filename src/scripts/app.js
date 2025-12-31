@@ -24,7 +24,10 @@ document.addEventListener('click', e => {
 
 createForm.addEventListener('submit', e => {
     e.preventDefault();
-    
+    document.getElementById('popup-content').classList.remove('visible');
+
+    content.innerHTML = '';
+
     const note = render('note');
     content.appendChild(note);
 })
