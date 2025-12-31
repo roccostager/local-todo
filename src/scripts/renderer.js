@@ -1,6 +1,6 @@
 import components from "./components";
 
-const render = function(component, parentNode) {
+const render = function(component) {
     const docElement = document.createElement(components[component].tag);
 
     console.log(component);
@@ -14,10 +14,10 @@ const render = function(component, parentNode) {
     });
 
     for (let i = 0; i < components[component].children.length; i++) {
-        render(components[component].children[i], docElement);
+        const childElement = render(components[component].children[i], docElement);
+        docElement.appendChild(childElement);
     }
-
-    parentNode.appendChild(docElement);
+    
     return docElement;
 }
 

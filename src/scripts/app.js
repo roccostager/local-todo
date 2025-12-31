@@ -24,5 +24,7 @@ document.addEventListener('click', e => {
 
 createForm.addEventListener('submit', e => {
     e.preventDefault();
-    render('note', content);
+    
+    const note = render('note');
+    content.appendChild(note);
 })
