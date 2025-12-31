@@ -25,7 +25,9 @@ const components = {
     },
     addButton: {
         tag: 'button',
-        attributes: {},
+        attributes: {
+            innerText: '+',
+        },
         classList: ['invis-button', 'squarify', 'p'],
         children: [],
     },
