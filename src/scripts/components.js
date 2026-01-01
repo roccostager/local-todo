@@ -41,7 +41,7 @@ const components = {
         tag: 'div',
         attributes: {},
         classList: ['new', 'note-component'],
-        children: ['disabledCheckbox', 'noteTextInput', 'addButton'],
+        children: ['disabledCheckbox', 'newNoteTextInput', 'addButton'],
     },
     disabledCheckbox: {
         tag: 'input',
@@ -51,6 +51,26 @@ const components = {
         },
         classList: [],
         children: [],
+    },
+    newNoteTextInput: {
+        tag: 'input',
+        attributes: {
+            type: 'text',
+            maxlength: '20',
+            placeholder: 'new note',
+            name: 'note',
+            autocomplete: 'off',
+            readOnly: true,
+        },
+        classList: ['p'],
+        children: [],
+    },
+
+    enabledNewNoteComponent: {
+        tag: 'div',
+        attributes: {},
+        classList: ['new', 'note-component'],
+        children: ['disabledCheckbox', 'newNoteTextInput', 'addButton'],
     },
     noteTextInput: {
         tag: 'input',

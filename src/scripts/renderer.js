@@ -1,4 +1,5 @@
 import components from "./components";
+import userActions from "./userActions";
 
 const content = document.querySelector('.content');
 
@@ -23,6 +24,7 @@ const render = function(component) {
 export const loadDirectoryContent = (directory) => {
     const note = render('newNote');
     content.appendChild(note);
+    userActions.bindTitleCreate(note);
 
     for (let i = 0; i < directory.notes.length; i++) {
         const note = directory.notes[i];  // Data

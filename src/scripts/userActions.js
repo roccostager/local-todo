@@ -7,7 +7,18 @@ const changeDirectory = function(directory, domElement) {  // directory refers t
     
     userData.changeDirectory(directory);
     domElement.classList.add('selected');
-}
+};
 
-const userActions = {changeDirectory};
+const bindTitleCreate = function(domNewNote) {
+    domNewNote.querySelector('input[type="text"].h3').addEventListener('keyup', e => {
+        console.log('event working');
+        if (e.key == 'Enter') {
+            let newData = userData.updateData.add('note', {title: 'temptitle'});
+            userData.updateData.push(newData, userData.selectedDirectory.notes);
+            console.log(userData);
+        }
+    });
+};
+
+const userActions = {changeDirectory, bindTitleCreate};
 export default userActions;
