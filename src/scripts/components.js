@@ -1,5 +1,5 @@
 const components = {
-    'note': {
+    note: {
         tag: 'div',
         attributes: {},
         classList: ['note'],
@@ -62,6 +62,25 @@ const components = {
             autocomplete: 'off',
         },
         classList: ['p'],
+        children: [],
+    },
+
+    directory: {
+        tag: 'button',
+        attributes: {},
+        classList: ['directory-container'],
+        children: ['directoryHeading', 'directoryDescription'],
+    },
+    directoryHeading: {
+        tag: 'h4',
+        attributes: {},
+        classList: ['h4'],
+        children: [],
+    },
+    directoryDescription: {
+        tag: 'p',
+        attributes: {},
+        classList: [],
         children: [],
     },
 };

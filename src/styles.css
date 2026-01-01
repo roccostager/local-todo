@@ -190,6 +190,11 @@ form .button {
     border-color: var(--border-modal);
     background-color: var(--bg-note);
 }
+.sidebar .directories-container .directory-container.selected {
+    background-color: var(--bg-note);
+    box-shadow: inset 0 0 3px oklch(0 0 0 / 10%), 1px 1px 3px oklch(0 0 0 / 10%);
+
+}
 .directory-container p {
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -200,6 +205,9 @@ form .button {
     color: var(--font-muted);
 }
 .directory-container:hover p {
+    -webkit-line-clamp: none;
+}
+.directory-container.selected p {
     -webkit-line-clamp: none;
 }
 

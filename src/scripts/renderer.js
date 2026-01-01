@@ -3,9 +3,6 @@ import components from "./components";
 const render = function(component) {
     const docElement = document.createElement(components[component].tag);
 
-    console.log(component);
-    console.log(components[component]);
-
     for (const [key, value] of Object.entries(components[component].attributes)) {
         docElement[key] = value;
     }
