@@ -282,3 +282,6 @@ input[type="text"]:focus + .invis-button {
 .note-component input[type="checkbox"]:checked + p {
     text-decoration: line-through;
 }
+.new {
+    order: 1;
+}

@@ -1,8 +1,9 @@
-import render from "./renderer";
+import render, { loadDirectoryContent } from "./renderer";
 import userData from "./dataManager";
+import userActions from "./userActions";
 
 const createForm = document.getElementById('note-create-form');
-const sidebar = document.querySelector('.sidebar');
+const directoriesContainer = document.querySelector('.directories-container');
 const content = document.querySelector('.content');
 
 document.addEventListener('click', e => {
@@ -34,15 +35,18 @@ createForm.addEventListener('submit', e => {
 
     content.innerHTML = '';
 
-    const note = render('note');
-    content.appendChild(note);
-
     const directory = render('directory');
     directory.querySelector('h4.h4').innerText = name;
     directory.querySelector('p').innerText = description;
-    document.querySelector('.directories-container').appendChild(directory);
+    directoriesContainer.appendChild(directory);
 
     let newData = userData.updateData.add('directory', {name, description});
     userData.updateData.push(newData, userData.data);
-    console.log(userData);
-})
+    userActions.changeDirectory(newData, directory);
+    loadDirectoryContent(newData);
+
+    directory.addEventListener('click', e => {
+        userActions.changeDirectory(newData, directory);
+        loadDirectoryContent(newData);
+    });
+});

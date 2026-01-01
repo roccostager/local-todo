@@ -1,8 +1,8 @@
 const components = {
-    note: {
+    newNote: {
         tag: 'div',
         attributes: {},
-        classList: ['note'],
+        classList: ['new', 'note'],
         children: ['newNoteHeading', 'newNotespace'],
     },
     newNoteHeading: {
@@ -81,6 +81,53 @@ const components = {
         tag: 'p',
         attributes: {},
         classList: [],
+        children: [],
+    },
+
+    note: {
+        tag: 'div',
+        attributes: {},
+        classList: ['note'],
+        children: ['noteHeading', 'notespace'],
+    },
+    noteHeading: {
+        tag: 'p',
+        attributes: {},
+        classList: ['h3'],
+        children: [],
+    },
+    notespace: {
+        tag: 'div',
+        attributes: {},
+        classList: ['new', 'note'],
+        children: [],
+    },
+    noteComponent: {
+        tag: 'div',
+        attributes: {},
+        classList: ['note-component'],
+        children: ['checkbox', 'noteName', 'crossButton'],
+    },
+    checkbox: {
+        tag: 'input',
+        attributes: {
+            type: 'checkbox',
+        },
+        classList: [],
+        children: [],
+    },
+    noteName: {
+        tag: 'p',
+        attributes: {},
+        classList: [],
+        children: [],
+    },
+    crossButton: {
+        tag: 'button',
+        attributes: {
+            innerHTML: '&times',
+        },
+        classList: ['invis-button', 'squarify', 'p', 'cross'],
         children: [],
     },
 };
