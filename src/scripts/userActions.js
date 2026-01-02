@@ -20,5 +20,16 @@ const bindTitleCreate = function(domNewNote) {
     });
 };
 
-const userActions = {changeDirectory, bindTitleCreate};
+const bindNoteCreate = function(newCheckbox, note) {
+    newCheckbox.querySelector('input[type="text"].p').addEventListener('keyup', e => {
+        console.log('event working');
+        if (e.key == 'Enter') {
+            let newData = userData.updateData.add('checkbox', {text: 'temptitle', checked: 'true'});
+            userData.updateData.push(newData, note.checkboxes); // Referes to data
+            console.log(userData);
+        }
+    });
+}
+
+const userActions = {changeDirectory, bindTitleCreate, bindNoteCreate};
 export default userActions;

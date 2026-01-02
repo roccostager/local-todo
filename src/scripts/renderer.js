@@ -22,6 +22,8 @@ const render = function(component) {
 }
 
 export const loadDirectoryContent = (directory) => {
+    content.innerHTML = '';
+
     const note = render('newNote');
     content.appendChild(note);
     userActions.bindTitleCreate(note);
@@ -32,20 +34,24 @@ export const loadDirectoryContent = (directory) => {
         const domNote = render('note');
         domNote.querySelector('p.h3').innerText = note.title;
 
-        loadNoteSpaceContent(note, domNote);  // Checkboxes
+        const newCheckbox = render('enabledNewNoteComponent');
+        domNote.appendChild(newCheckbox);
+        userActions.bindNoteCreate(newCheckbox, note);
+
+        loadNoteSpaceContent(note, domNote.querySelector('.notespace'));  // Checkboxes
 
         content.appendChild(domNote);
     }
-};
-
-const loadNoteSpaceContent = (note, domNote) => {
-    for (let i = 0; i < note.checkboxes; i++) {
-        const domCheckbox = render('noteComponent');
-        domCheckbox.querySelector('.checkbox').checked = note[i].checked;
-        domCheckbox.querySelector('p').innerText = note[i].text;
+    
+    function loadNoteSpaceContent(note, domNote) {
+        for (let i = 0; i < note.checkboxes.length; i++) {
+            console.log('im rendering');
+            const domCheckbox = render('noteComponent');
+            domCheckbox.querySelector('input[type="checkbox"]').checked = note.checkboxes[i].checked;
+            domCheckbox.querySelector('p').innerText = note.checkboxes[i].text;
+            domNote.appendChild(domCheckbox);
+        }
     }
-    const newCheckbox = render('newNoteComponent');
-    domNote.appendChild(newCheckbox);
-}
+};
 
 export default render;

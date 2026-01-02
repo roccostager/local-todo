@@ -33,8 +33,6 @@ createForm.addEventListener('submit', e => {
     const name = formData.get('name');
     const description = formData.get('description');
 
-    content.innerHTML = '';
-
     const directory = render('directory');
     directory.querySelector('h4.h4').innerText = name;
     directory.querySelector('p').innerText = description;

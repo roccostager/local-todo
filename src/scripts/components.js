@@ -70,7 +70,7 @@ const components = {
         tag: 'div',
         attributes: {},
         classList: ['new', 'note-component'],
-        children: ['disabledCheckbox', 'newNoteTextInput', 'addButton'],
+        children: ['checkbox', 'noteTextInput', 'addButton'],
     },
     noteTextInput: {
         tag: 'input',
@@ -119,7 +119,7 @@ const components = {
     notespace: {
         tag: 'div',
         attributes: {},
-        classList: ['new', 'note'],
+        classList: ['notespace'],
         children: [],
     },
     noteComponent: {
