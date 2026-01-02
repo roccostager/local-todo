@@ -10,23 +10,29 @@ const changeDirectory = function(directory, domElement) {  // directory refers t
 };
 
 const bindTitleCreate = function(domNewNote) {
-    domNewNote.querySelector('input[type="text"].h3').addEventListener('keyup', e => {
-        console.log('event working');
+    const inputField = domNewNote.querySelector('input[type="text"].h3');
+    inputField.addEventListener('keyup', e => {
         if (e.key == 'Enter') {
-            let newData = userData.updateData.add('note', {title: 'temptitle'});
+            let newData = userData.updateData.add('note', {title: inputField.value});
             userData.updateData.push(newData, userData.selectedDirectory.notes);
-            console.log(userData);
+            inputField.value = '';
+
+            const actionEvent = new CustomEvent('newNoteCreation', {detail: newData});
+            domNewNote.dispatchEvent(actionEvent);
         }
     });
 };
 
 const bindNoteCreate = function(newCheckbox, note) {
-    newCheckbox.querySelector('input[type="text"].p').addEventListener('keyup', e => {
-        console.log('event working');
+    const inputField = newCheckbox.querySelector('input[type="text"].p');
+    inputField.addEventListener('keyup', e => {
         if (e.key == 'Enter') {
-            let newData = userData.updateData.add('checkbox', {text: 'temptitle', checked: 'true'});
+            let newData = userData.updateData.add('checkbox', {text: inputField.value, checked: false});
             userData.updateData.push(newData, note.checkboxes); // Referes to data
-            console.log(userData);
+            inputField.value = '';
+            
+            const actionEvent = new CustomEvent('newCheckboxCreation', {detail: newData});
+            newCheckbox.dispatchEvent(actionEvent);
         }
     });
 }

@@ -24,13 +24,20 @@ const render = function(component) {
 export const loadDirectoryContent = (directory) => {
     content.innerHTML = '';
 
-    const note = render('newNote');
-    content.appendChild(note);
-    userActions.bindTitleCreate(note);
+    const domNewNote = render('newNote');
+    content.appendChild(domNewNote);
+    userActions.bindTitleCreate(domNewNote);
+
+    domNewNote.addEventListener('newNoteCreation', out => {
+        console.log(out);
+        loadNoteContent(out.detail);
+    });
 
     for (let i = 0; i < directory.notes.length; i++) {
-        const note = directory.notes[i];  // Data
-        
+        loadNoteContent(directory.notes[i]);
+    }
+
+    function loadNoteContent(note) {
         const domNote = render('note');
         domNote.querySelector('p.h3').innerText = note.title;
 
@@ -38,19 +45,22 @@ export const loadDirectoryContent = (directory) => {
         domNote.appendChild(newCheckbox);
         userActions.bindNoteCreate(newCheckbox, note);
 
-        loadNoteSpaceContent(note, domNote.querySelector('.notespace'));  // Checkboxes
+        newCheckbox.addEventListener('newCheckboxCreation', out => {
+            loadNoteSpaceContent(out.detail, domNote.querySelector('.notespace'));
+        });
+
+        for (let i = 0; i < note.checkboxes.length; i++) {
+            loadNoteSpaceContent(note.checkboxes[i], domNote.querySelector('.notespace'));  // Checkboxes
+        }
 
         content.appendChild(domNote);
     }
     
-    function loadNoteSpaceContent(note, domNote) {
-        for (let i = 0; i < note.checkboxes.length; i++) {
-            console.log('im rendering');
-            const domCheckbox = render('noteComponent');
-            domCheckbox.querySelector('input[type="checkbox"]').checked = note.checkboxes[i].checked;
-            domCheckbox.querySelector('p').innerText = note.checkboxes[i].text;
-            domNote.appendChild(domCheckbox);
-        }
+    function loadNoteSpaceContent(checkbox, domNote) {
+        const domCheckbox = render('noteComponent');
+        domCheckbox.querySelector('input[type="checkbox"]').checked = checkbox.checked;
+        domCheckbox.querySelector('p').innerText = checkbox.text;
+        domNote.appendChild(domCheckbox);
     }
 };
 
