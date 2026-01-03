@@ -23,7 +23,7 @@ document.addEventListener('click', e => {
             }
         }
     }
-})
+});
 
 createForm.addEventListener('submit', e => {
     e.preventDefault();

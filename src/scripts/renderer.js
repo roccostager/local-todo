@@ -44,6 +44,7 @@ export const loadDirectoryContent = (directory) => {
         const newCheckbox = render('enabledNewNoteComponent');
         domNote.appendChild(newCheckbox);
         userActions.bindNoteCreate(newCheckbox, note);
+        console.log('we are here!');
 
         newCheckbox.addEventListener('newCheckboxCreation', out => {
             loadNoteSpaceContent(out.detail, domNote.querySelector('.notespace'));
@@ -54,6 +55,7 @@ export const loadDirectoryContent = (directory) => {
         }
 
         content.appendChild(domNote);
+        newCheckbox.querySelector('input[type="text"].p').focus();
     }
     
     function loadNoteSpaceContent(checkbox, domNote) {
