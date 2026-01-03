@@ -60,9 +60,15 @@ export const loadDirectoryContent = (directory) => {
     
     function loadNoteSpaceContent(checkbox, domNote) {
         const domCheckbox = render('noteComponent');
-        domCheckbox.querySelector('input[type="checkbox"]').checked = checkbox.checked;
+        const checkboxField = domCheckbox.querySelector('input[type="checkbox"]');
+
+        checkboxField.checked = checkbox.checked;
         domCheckbox.querySelector('p').innerText = checkbox.text;
         domNote.appendChild(domCheckbox);
+
+        checkboxField.addEventListener('change', e => {
+            checkbox.checked = checkboxField.checked;
+        });
     }
 };
 
