@@ -108,7 +108,13 @@ const components = {
         tag: 'div',
         attributes: {},
         classList: ['note'],
-        children: ['noteHeading', 'notespace'],
+        children: ['titleComponent', 'notespace'],
+    },
+    titleComponent: {
+        tag: 'div',
+        attributes: {},
+        classList: ['title-component'],
+        children: ['noteHeading', 'crossButton'],
     },
     noteHeading: {
         tag: 'p',

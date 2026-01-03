@@ -29,16 +29,24 @@ export const loadDirectoryContent = (directory) => {
     userActions.bindTitleCreate(domNewNote);
 
     domNewNote.addEventListener('newNoteCreation', out => {
-        loadNoteContent(out.detail);
+        loadNoteContent(out.detail, directory);
     });
 
     for (let i = 0; i < directory.notes.length; i++) {
-        loadNoteContent(directory.notes[i]);
+        loadNoteContent(directory.notes[i], directory);
     }
 
-    function loadNoteContent(note) {
-        const domNote = render('note');
+    function loadNoteContent(note, directory) {
+        let domNote = render('note');
         domNote.querySelector('p.h3').innerText = note.title;
+
+        const crossButton = domNote.querySelector('button.cross');
+        crossButton.addEventListener('click', function() {
+            const dataIndex = directory.notes.indexOf(note);
+            directory.notes.splice(dataIndex, 1);  // Remove data from userData
+
+            domNote.remove();
+        });
 
         const newCheckbox = render('enabledNewNoteComponent');
         domNote.appendChild(newCheckbox);
@@ -74,7 +82,6 @@ export const loadDirectoryContent = (directory) => {
             note.checkboxes.splice(dataIndex, 1);  // Remove data from userData
 
             domCheckbox.remove();
-            domCheckbox = null;  // Remove reference so garbage collector clears memory
         });
     }
 };

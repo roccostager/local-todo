@@ -229,6 +229,14 @@ form .button {
     border-radius: 5px;
     border: 1.5px solid var(--border-note);
 }
+.title-component {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.title-component:hover .invis-button.cross {
+    visibility: visible;
+}
 .notespace {
     display: flex;
     flex-direction: column;
