@@ -29,7 +29,6 @@ export const loadDirectoryContent = (directory) => {
     userActions.bindTitleCreate(domNewNote);
 
     domNewNote.addEventListener('newNoteCreation', out => {
-        console.log(out);
         loadNoteContent(out.detail);
     });
 
@@ -44,22 +43,21 @@ export const loadDirectoryContent = (directory) => {
         const newCheckbox = render('enabledNewNoteComponent');
         domNote.appendChild(newCheckbox);
         userActions.bindNoteCreate(newCheckbox, note);
-        console.log('we are here!');
 
         newCheckbox.addEventListener('newCheckboxCreation', out => {
-            loadNoteSpaceContent(out.detail, domNote.querySelector('.notespace'));
+            loadNoteSpaceContent(out.detail, domNote.querySelector('.notespace'), note);
         });
 
         for (let i = 0; i < note.checkboxes.length; i++) {
-            loadNoteSpaceContent(note.checkboxes[i], domNote.querySelector('.notespace'));  // Checkboxes
+            loadNoteSpaceContent(note.checkboxes[i], domNote.querySelector('.notespace'), note);  // Checkboxes
         }
 
         content.appendChild(domNote);
         newCheckbox.querySelector('input[type="text"].p').focus();
     }
     
-    function loadNoteSpaceContent(checkbox, domNote) {
-        const domCheckbox = render('noteComponent');
+    function loadNoteSpaceContent(checkbox, domNote, note) {
+        let domCheckbox = render('noteComponent');
         const checkboxField = domCheckbox.querySelector('input[type="checkbox"]');
 
         checkboxField.checked = checkbox.checked;
@@ -68,6 +66,15 @@ export const loadDirectoryContent = (directory) => {
 
         checkboxField.addEventListener('change', e => {
             checkbox.checked = checkboxField.checked;
+        });
+
+        const crossButton = domCheckbox.querySelector('button.cross');
+        crossButton.addEventListener('click', function() {
+            const dataIndex = note.checkboxes.indexOf(checkbox);
+            note.checkboxes.splice(dataIndex, 1);  // Remove data from userData
+
+            domCheckbox.remove();
+            domCheckbox = null;  // Remove reference so garbage collector clears memory
         });
     }
 };
