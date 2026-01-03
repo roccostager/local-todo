@@ -89,7 +89,13 @@ const components = {
         tag: 'button',
         attributes: {},
         classList: ['directory-container'],
-        children: ['directoryHeading', 'directoryDescription'],
+        children: ['directoryHeader', 'directoryDescription'],
+    },
+    directoryHeader: {
+        tag: 'div',
+        attributes: {},
+        classList: ['directory-header'],
+        children: ['directoryHeading', 'crossButton'],
     },
     directoryHeading: {
         tag: 'h4',

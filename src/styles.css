@@ -210,6 +210,13 @@ form .button {
 .directory-container.selected p {
     -webkit-line-clamp: none;
 }
+.directory-header {
+    display: flex;
+    align-items: center;
+}
+.directory-header:hover .cross {
+    visibility: visible;
+}
 
 .content {
     padding: 20px 20px;
@@ -219,6 +226,14 @@ form .button {
     align-items: flex-start;
     overflow-x: auto;
     scrollbar-color: grey transparent;
+}
+.content:empty {
+    justify-content: center;
+    align-items: center;
+}
+.content:empty::before {
+    content: 'Create or choose a directory to get started!';
+    text-align: center;
 }
 
 .note {

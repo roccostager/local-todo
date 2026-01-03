@@ -44,7 +44,15 @@ createForm.addEventListener('submit', e => {
     loadDirectoryContent(newData);
 
     directory.addEventListener('click', e => {
-        userActions.changeDirectory(newData, directory);
-        loadDirectoryContent(newData);
+        if (e.target == directory.querySelector('.directory-header button.cross')) {
+            const dataIndex = userData.data.indexOf(newData);
+            userData.data.splice(dataIndex, 1);  // Remove data from userData
+
+            directory.remove();
+            content.innerHTML = '';
+        } else {
+            userActions.changeDirectory(newData, directory);
+            loadDirectoryContent(newData);
+        }
     });
 });
