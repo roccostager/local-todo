@@ -56,3 +56,8 @@ createForm.addEventListener('submit', e => {
         }
     });
 });
+
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+darkModeToggle.addEventListener('click', function() {
+    document.querySelector('body').classList.toggle('dark');
+});
