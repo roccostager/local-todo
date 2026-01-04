@@ -28,6 +28,8 @@
     --font-muted: oklch(40% 0 0);
 
     --depth-basic: drop-shadow(2px 2px 2px oklch(0% 0 0 / 10%));
+
+    --dark-mode-icon: url(icons/dark-mode.svg);
 }
 body.dark {
     --bg-primary: oklch(10% 0 0);
@@ -79,6 +81,28 @@ body {
     grid-row: 1 / span 1;
     background-color: var(--bg-header);
     border-bottom: 2px solid var(--border-header);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.header .button {
+    aspect-ratio: 1;
+}
+.header .left-anchor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+#dark-mode-toggle {
+    background-image: var(--dark-mode-icon);
+    background-position: center;
+    background-size: 70%;
+    background-repeat: no-repeat;
 }
 
 .sidebar {
@@ -214,7 +238,7 @@ form .button {
     display: flex;
     align-items: center;
 }
-.directory-header:hover .cross {
+.directory-container:hover .cross {
     visibility: visible;
 }
 
