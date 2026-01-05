@@ -1,29 +1,35 @@
-# README
-A template repository for webpack. Compatable with **vanilla HTML, CSS & Javascript**. This repository only contains dev-dependencies.
+# 📝 local-todo
+A to-do application using browser local storage.
+
+> **Live preview: https://roccostager.github.io/local-todo/**
+
+## 💡 About this Project!
+I built this project to familiarise with fundamentals of DOM manipulation, and client-side data persistence without relying on any frameworks.
+
+### Key Features
+* **Create, read, update, delete** (CRUD) features! Add tasks, mark them as complete, or delete them.
+* **Data persistence**: using browser local storage.
+
+### 🛠️ Built With
+> Pure vanilla! No frameworks... (though I certainly wanted to use them)
+* **HTML5**
+* **CSS3**
+* **JavaScript** (ES6)
+* **Webpack**
+
+## 🧠 What I learnt!
+This project was a deep-dive into the fundamentals of web development. I challenged myself to build a full and functional, albeit simple application.
+
+### Challenges
+* **Code organisation**: I struggled with naming conventions and general structure. Seperating code into different modules helped. I found that distinguishing between DOM or data references became increasingly more confusing. In my upcoming projects I plan to adhere to strict naming conventions.
+* **Handling state**: It was difficult to ensure the DOM was in sync with the data. I had to ensure changes to the DOM always updated data, and vice versa!
+    * The issue of handling state made it challenging to implement proper event delegation. In future projects, I will make sure to consider performance optimisation in the planning process so features such as event delegation can be handled properly.
+
+### Overall
+I feel I solidified my understanding of **fundamentals**. Creating a full application proved to be much more difficult than a small and simple project. The added challenges of needing to organise large amounts of code made everything much more complicated.
 
 ## Instructions
-1. **Run** `npm install` **in the terminal** to install node dev dependencies.  
-
-2. **Run** `npx webpack serve` **to start a webpack server**, allowing for dynamic development with live preview.  
-
-3. Or simply **run** `npx webpack` **to update dist ***just once*****.  
-
-4. <i>or use the scripts below to do the same...</i>
-
-## First-time Deploy
-The first-time deploy is a special case. Some extra commands need to be run.
-
-1. `git branch <deploy-branch-name>`.
-2. run `git status` in case anything should be commited before changing branch.
-3. `git checkout gh-pages && git merge main --no-edit` to change branch and sync changes from main.
-4. `np run build` to bundle application (or `npx webpack`).
-5. `git add dist -f && git commit -m "Deployment commit"` to commit **dist**, which is usually in **.gitignore**.
-6. `npm run deploy` will deploy the bundled application to the web (or `git subtree push --prefix dist origin gh-pages`).
-
-## Scripts
-This template also includes npm scripts for quality of life! All scripts can be run in the terminal using the command:
-> `npm run <script-name>`
-
-* `npm run build` replaces `npx webpack`.
-* `npm run dev` replaces `npx webpack serve`.
-* `npm run deploy` replaces `git subtree push --prefix dist origin gh-pages` (change in package.json).
+To play around locally:
+1. **Clone** the github repository to your local device.
+2. **Run** `npm install` **in the terminal** to install node dev dependencies.  
+3. **Run** `npx webpack serve` **to start a webpack server**, allowing you to view a live preview on `localhost:8080`.
