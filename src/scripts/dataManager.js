@@ -46,6 +46,7 @@ const updateData = (function() {
 let userData = {
     data: [],
     selectedDirectory: undefined,
+    darkMode: false,
     changeDirectory: function(newDirectory) {
         this.selectedDirectory = newDirectory;
     },
