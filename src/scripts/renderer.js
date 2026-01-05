@@ -1,7 +1,9 @@
 import components from "./components";
 import userActions from "./userActions";
+import userData from "./dataManager";
 
 const content = document.querySelector('.content');
+const directoriesContainer = document.querySelector('.directories-container');
 
 const render = function(component) {
     const docElement = document.createElement(components[component].tag);
@@ -85,5 +87,33 @@ export const loadDirectoryContent = (directory) => {
         });
     }
 };
+
+export const createDirectory = (create, dataObj) => {
+    const directory = render('directory');
+    directory.querySelector('h4.h4').innerText = dataObj.name;
+    directory.querySelector('p').innerText = dataObj.description;
+    directoriesContainer.appendChild(directory);
+
+    let dirData = dataObj;
+    if (create) {    
+        dirData = userData.updateData.add('directory', dataObj);
+        userData.updateData.push(dirData, userData.data);
+        userActions.changeDirectory(dirData, directory);
+        loadDirectoryContent(dirData);
+    }
+
+    directory.addEventListener('click', e => {
+        if (e.target == directory.querySelector('.directory-header button.cross')) {
+            const dataIndex = userData.data.indexOf(dirData);
+            userData.data.splice(dataIndex, 1);  // Remove data from userData
+
+            directory.remove();
+            content.innerHTML = '';
+        } else {
+            userActions.changeDirectory(dirData, directory);
+            loadDirectoryContent(dirData);
+        }
+    });
+}
 
 export default render;

@@ -1,10 +1,7 @@
-import render, { loadDirectoryContent } from "./renderer";
+import { createDirectory } from "./renderer";
 import userData from "./dataManager";
-import userActions from "./userActions";
 
 const createForm = document.getElementById('note-create-form');
-const directoriesContainer = document.querySelector('.directories-container');
-const content = document.querySelector('.content');
 
 document.addEventListener('click', e => {
     const popupButton = document.getElementById('popup-button');
@@ -33,28 +30,7 @@ createForm.addEventListener('submit', e => {
     const name = formData.get('name');
     const description = formData.get('description');
 
-    const directory = render('directory');
-    directory.querySelector('h4.h4').innerText = name;
-    directory.querySelector('p').innerText = description;
-    directoriesContainer.appendChild(directory);
-
-    let newData = userData.updateData.add('directory', {name, description});
-    userData.updateData.push(newData, userData.data);
-    userActions.changeDirectory(newData, directory);
-    loadDirectoryContent(newData);
-
-    directory.addEventListener('click', e => {
-        if (e.target == directory.querySelector('.directory-header button.cross')) {
-            const dataIndex = userData.data.indexOf(newData);
-            userData.data.splice(dataIndex, 1);  // Remove data from userData
-
-            directory.remove();
-            content.innerHTML = '';
-        } else {
-            userActions.changeDirectory(newData, directory);
-            loadDirectoryContent(newData);
-        }
-    });
+    createDirectory(true, {name, description});
 });
 
 const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -62,3 +38,8 @@ darkModeToggle.addEventListener('click', function() {
     userData.darkMode = !userData.darkMode;
     userData.darkMode ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
 });
+
+userData.loadData();
+for (let i = 0; i < userData.data.length; i++) {
+    createDirectory(false, userData.data[i]);
+}
