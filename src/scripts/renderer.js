@@ -48,6 +48,7 @@ export const loadDirectoryContent = (directory) => {
             directory.notes.splice(dataIndex, 1);  // Remove data from userData
 
             domNote.remove();
+            userData.saveData();
         });
 
         const newCheckbox = render('enabledNewNoteComponent');
@@ -76,6 +77,7 @@ export const loadDirectoryContent = (directory) => {
 
         checkboxField.addEventListener('change', e => {
             checkbox.checked = checkboxField.checked;
+            userData.saveData();
         });
 
         const crossButton = domCheckbox.querySelector('button.cross');
@@ -84,6 +86,7 @@ export const loadDirectoryContent = (directory) => {
             note.checkboxes.splice(dataIndex, 1);  // Remove data from userData
 
             domCheckbox.remove();
+            userData.saveData();
         });
     }
 };
@@ -109,6 +112,7 @@ export const createDirectory = (create, dataObj) => {
 
             directory.remove();
             content.innerHTML = '';
+            userData.saveData();
         } else {
             userActions.changeDirectory(dirData, directory);
             loadDirectoryContent(dirData);
