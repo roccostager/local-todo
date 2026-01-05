@@ -59,6 +59,6 @@ createForm.addEventListener('submit', e => {
 
 const darkModeToggle = document.getElementById('dark-mode-toggle');
 darkModeToggle.addEventListener('click', function() {
-    document.querySelector('body').classList.toggle('dark');
-    userData.darkMode = document.querySelector('body').classList.contains('dark');
+    userData.darkMode = !userData.darkMode;
+    userData.darkMode ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
 });

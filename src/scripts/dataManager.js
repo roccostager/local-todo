@@ -21,14 +21,6 @@ const dataStructures = (function() {
     return {directory, note, checkbox};
 })();
 
-const loadData = function() {
-    console.log('Loading Data!');
-};
-
-const saveData = function() {
-    console.log('Saving Data!');
-};
-
 const updateData = (function() {
     const add = (dataType, properties) => {
         let newData = dataStructures[dataType](properties);
@@ -39,6 +31,7 @@ const updateData = (function() {
     };
     const push = (data, pushLocation) => {
         pushLocation.push(data);
+        saveData();
     }
     return {add, remove, push};
 })();
@@ -52,4 +45,26 @@ let userData = {
     },
     loadData, saveData, updateData,
 };
+
+function loadData() {
+    console.log('Loading Data!');
+
+    const stored = localStorage.getItem('stored');
+    if (stored) {
+        const storedData = JSON.parse(stored);
+        userData.data = storedData.data;
+        userData.darkMode = storedData.darkMode;
+    }
+};
+
+function saveData() {
+    console.log('Saving Data!');
+
+    let stored = {};
+    stored.data = userData.data;
+    stored.darkMode = userData.darkMode;
+
+    localStorage.setItem('stored', JSON.stringify(stored));
+};
+
 export default userData;
