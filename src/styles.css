@@ -16,6 +16,8 @@
     --bg-note: oklch(99.5% 0 0);
     --bg-note-component: oklch(100% 0 0);
     --bg-directory-segment: oklch(97% 0 0);
+    --bg-selected: oklch(99.5% 0 0);
+    --bg-hover: oklch(99% 0 0);
 
     --check-bg: oklch(71.24% 0.1383 21.103);
 
@@ -45,6 +47,8 @@ body.dark {
     --bg-note: oklch(18% 0 0);
     --bg-note-component: oklch(16% 0 0);
     --bg-directory-segment: oklch(18.5% 0 0);
+    --bg-selected: oklch(24% 0 0);
+    --bg-hover: oklch(22% 0 0);
 
     --check-bg: oklch(55.242% 0.07196 19.571);
 
@@ -242,11 +246,10 @@ form .button {
     border-width: 1px 0;
     border-style: solid;
     border-color: var(--border-modal);
-    background-color: var(--bg-note);
+    background-color: var(--bg-hover);
 }
 .sidebar .directories-container .directory-container.selected {
-    background-color: var(--bg-note);
-    box-shadow: inset 0 0 3px oklch(0 0 0 / 10%), 1px 1px 3px oklch(0 0 0 / 10%);
+    background-color: var(--bg-selected);
 
 }
 .directory-container p {
