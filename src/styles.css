@@ -42,8 +42,8 @@ body.dark {
     --bg-header: oklch(12% 0 0);
     --bg-badge: oklch(15% 0 0);
     --bg-modal: oklch(16% 0 0);
-    --bg-note: oklch(16.5% 0 0);
-    --bg-note-component: oklch(10% 0 0);
+    --bg-note: oklch(18% 0 0);
+    --bg-note-component: oklch(16% 0 0);
     --bg-directory-segment: oklch(18.5% 0 0);
 
     --check-bg: oklch(55.242% 0.07196 19.571);
@@ -63,7 +63,7 @@ body.dark {
 
     --depth-basic: drop-shadow(2px 2px 2px oklch(100% 0 0 / 10%));
 
-    --dark-mode-icon: url(icons/dark-mode.svg);
+    --dark-mode-icon: url(icons/light-mode.svg);
 }
 
 /* Typography */
@@ -286,7 +286,7 @@ form .button {
     align-items: center;
 }
 .content:empty::before {
-    content: 'Create or choose a directory to get started!';
+    content: 'Create or choose a note to get started!';
     text-align: center;
 }
 
