@@ -37,9 +37,11 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
 darkModeToggle.addEventListener('click', function() {
     userData.darkMode = !userData.darkMode;
     userData.darkMode ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
+    userData.saveData();
 });
 
 userData.loadData();
+userData.darkMode ? document.querySelector('body').classList.add('dark') : document.querySelector('body').classList.remove('dark');
 for (let i = 0; i < userData.data.length; i++) {
     createDirectory(false, userData.data[i]);
 }

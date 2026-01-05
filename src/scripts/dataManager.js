@@ -47,8 +47,6 @@ let userData = {
 };
 
 function loadData() {
-    console.log('Loading Data!');
-
     const stored = localStorage.getItem('stored');
     if (stored) {
         const storedData = JSON.parse(stored);
@@ -58,8 +56,6 @@ function loadData() {
 };
 
 function saveData() {
-    console.log('Saving Data!');
-
     let stored = {};
     stored.data = userData.data;
     stored.darkMode = userData.darkMode;
